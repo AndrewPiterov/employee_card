@@ -1,16 +1,39 @@
-# employee_card
+# WorkerCard App
 
-A new Flutter project.
+Мини-приложение на Flutter, отображающее карточку рабочего с данными из внешнего API (https://randomuser.me/) и дополнительной информацией. Использует BLoC-подход для управления состоянием и структурировано по слоям.
 
-## Getting Started
+## 🏗 Архитектура
 
-This project is a starting point for a Flutter application.
+Проект разделён на следующие слои:
 
-A few resources to get you started if this is your first Flutter project:
+- **UI**: экраны и виджеты, построенные на основе состояний BLoC.
+- **Logic (BLoC)**: управление состоянием через события и переходы между состояниями.
+- **Model**: структура данных от API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ⚙️ Используемые технологии
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter (Material UI)
+- HTTP пакет
+- flutter_bloc
+- ExpansionPanelList, ListTile, ElevatedButton, Snackbar и другие стандартные компоненты Flutter
+
+## 📦 Установка и запуск
+
+1. Установите зависимости:
+   ```bash
+   flutter pub get
+   ```
+2. Сгенерируйте модели:
+   ```
+   `dart run build_runner build --delete-conflicting-outputs`
+    ```
+3. Запустите приложение:
+   ```bash
+   flutter run
+   ```
+
+## 🔁 Логика работы
+
+- При запуске приложение инициирует событие `FetchWorkerEvent`.
+- BLoC получает данные из API и переходит в состояние `WorkerLoaded`.
+- UI автоматически обновляется в зависимости от текущего состояния.
